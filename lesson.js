@@ -5,21 +5,11 @@ const PORT = 3000;
 app.use(express.json());
 
 // נתונים (בהמשך נפריד לקבצים)
-let courses = [{ id: 1, name: "Node.js Basics" }];
 let students = [{ id: 1, name: "Israel" }];
 let enrollments = []; // נדרש במשימה: ישות רישום
 
-// --- Routes עבור קורסים ---
-app.get('/courses', (req, res) => res.json(courses));
-app.get('/courses/:id', (req, res) => {
-    const course = courses.find(c => c.id === parseInt(req.params.id));
-    course ? res.json(course) : res.status(404).json({ message: "Not found" });
-});
-app.post('/courses', (req, res) => {
-    const newCourse = { id: courses.length + 1, ...req.body };
-    courses.push(newCourse);
-    res.json(newCourse);
-});
+// מחברים את ה-Routes של הקורסים שביקשת להפריד
+app.use('/courses', require('./courses'));
 
 // --- Routes עבור תלמידים ---
 app.get('/students', (req, res) => res.json(students));
