@@ -11,4 +11,12 @@ const create = (newStudentData) => {
     return newStudent;
 };
 
-module.exports = { getAll, create };
+const getById = (id) => {
+    return students.find(s => s.id === id);
+};
+
+module.exports = { 
+    getAll, 
+    create, 
+    getById 
+};
