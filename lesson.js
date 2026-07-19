@@ -4,7 +4,8 @@ const PORT = 3000;
 
 // ייבוא ה-Routers
 const coursesRouter = require('./routes/courses');
-const studentsRouter = require('./routes/students');
+// ב-lesson.js
+const studentsRouter = require('./routes/students'); // שימי לב שזה Router ולא Controller
 
 // Middleware
 app.use(express.json());
