@@ -7,14 +7,11 @@ const getAllStudents = (req, res) => {
 };
 
 const createStudent = (req, res) => {
-    const newStudent = studentsService.create(req.body);
-    res.json(newStudent);
-};
-exports.createStudent = (req, res) => {
     const newStudent = req.body;
     const result = studentsService.addStudent(newStudent);
     res.status(201).json(result);
 };
+
 const getStudentById = (req, res) => {
     const studentId = parseInt(req.params.id);
 
@@ -30,4 +27,5 @@ const getStudentById = (req, res) => {
         res.status(404).send('Student not found');
     }
 };
+
 module.exports = { getAllStudents, getStudentById, createStudent };
