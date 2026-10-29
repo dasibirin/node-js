@@ -1,22 +1,16 @@
 // controllers/courses.js
 const coursesService = require('../services/courses');
 
-const getAll = async (req, res) => {
-    try {
-        const courses = await coursesService.getAllCourses();
-        res.json(courses);
-    } catch (err) {
-        res.status(500).json({ message: 'Error reading courses' });
-    }
+const getAll = (req, res) => {
+    coursesService.getAllCourses()
+        .then((courses) => res.json(courses))
+        .catch(() => res.status(500).json({ message: 'Error reading courses' }));
 };
 
-const create = async (req, res) => {
-    try {
-        const newCourse = await coursesService.addCourse(req.body);
-        res.json(newCourse);
-    } catch (err) {
-        res.status(500).json({ message: 'Error creating course' });
-    }
+const create = (req, res) => {
+    coursesService.addCourse(req.body)
+        .then((newCourse) => res.status(201).json(newCourse))
+        .catch(() => res.status(500).json({ message: 'Error creating course' }));
 };
 
 module.exports = {
