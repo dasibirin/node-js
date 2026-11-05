@@ -1,6 +1,10 @@
 // טעינת משתני הסביבה מקובץ .env — חייב להיות ראשון!
 require('dotenv').config();
 
+if (!process.env.SECRET_KEY) {
+    console.warn('[אזהרה] SECRET_KEY לא מוגדר — כל בקשה ל-/students תיענה 401. הגדירי אותו בקובץ .env');
+}
+
 const express = require('express');
 const app = express();
 const PORT = process.env.PORT || 3000;

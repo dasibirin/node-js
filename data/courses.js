@@ -5,7 +5,7 @@ const coursesFilePath = path.join(__dirname, 'courses.json');
 
 async function getCourses() {
     const data = await fs.readFile(coursesFilePath, 'utf8');
-    return JSON.parse(data);
+    return data.trim() ? JSON.parse(data) : [];
 }
 
 async function saveCourses(courses) {

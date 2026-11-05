@@ -1,21 +1,21 @@
 // services/students.js
 const students = require('../data/students');
 
-const getAll = () => {
+const getAll = async () => {
     return students;
 };
 
-const create = (newStudentData) => {
+const create = async (newStudentData) => {
     const newStudent = { id: students.length + 1, ...newStudentData };
     students.push(newStudent);
     return newStudent;
 };
 
-const addStudent = (newStudentData) => {
+const addStudent = async (newStudentData) => {
     return create(newStudentData);
 };
 
-const getById = (id) => {
+const getById = async (id) => {
     return students.find(s => s.id === id);
 };
 
